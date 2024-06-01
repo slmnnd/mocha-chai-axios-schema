@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as chai from "chai";
 import chaiJsonSchemaAjv from "chai-json-schema-ajv";
+import dataTodos from "./MCAxios.js";
 
 chai.use(chaiJsonSchemaAjv)
 
@@ -12,6 +13,15 @@ describe('API Testing', function(){
     }); 
 
     describe('Todos API Testing', function(){
+        const schemaTodos = {
+            type : 'object',
+            properties:{
+                id : {type : 'number'},
+                userId : {type : 'number'},
+                todo : {type : 'string'},
+                completed : {type : 'boolean'},
+            }
+        }
 
         it('Menguji API dengan metode GET', async function (){
             const id = 5;
@@ -19,9 +29,11 @@ describe('API Testing', function(){
               
             //assert
             expect(res.status).to.equal(200)
+            expect(res.data).to.be.jsonSchema(schemaTodos)
         })
     
-        it('Menguji API dengan metode POST', async function (){
+        //positive test case
+        it('Menguji API dengan metode POST dengan tipe data yang benar', async function (){
             const createTodo = {
                 todo: "Text dulu",
                 completed : false,
@@ -31,10 +43,11 @@ describe('API Testing', function(){
             const res = await reusable.post(`/todos/add`, createTodo)
             
             //assert
-            expect(res.status).to.equal(200)
+            expect(res.status).to.equal(201)
+            expect(res.data).to.be.jsonSchema(schemaTodos)
             
         })
-    
+
         it('Menguji API dengan metode PUT', async function (){
             const updateTodo = {
                 todo : "Text a friend",
@@ -47,6 +60,7 @@ describe('API Testing', function(){
 
             //assert
             expect(res.status).to.equal(200)
+            expect(res.data).to.be.jsonSchema(schemaTodos)
             
         })
     
@@ -56,26 +70,35 @@ describe('API Testing', function(){
 
             //assert
             expect(res.status).to.equal(200)
+            // expect(res.data).to.be.jsonSchema(schemaTodos)
             
         })
     })
 
     describe('Login API Testing', function(){
+        const schemaLogin = {
+            type : 'object',
+            properties:{
+                id : {type : 'number'},
+                username : {type : 'string'},
+                password : {type : 'string'},
+            }
+        }
         it('Login menggunakan token', async function (){
-            reusable.post('/auth/login', {
+            const res = await reusable.post('/auth/login', {
             username: 'addisonw',
             password: 'addisonwpass'
             })
-
-        .then(res =>{ 
-            reusable.get('/auth/me', {
+        
+            const login = await reusable.get('/auth/me', {
                 headers: {
                     authorization : 'Bearer ' + res.data.token
-                }
+                }                                 
+            })   
 
-                //assert
-            })        
-        })
+        //assert
+        expect(login.status).to.equal(200)
+        expect(res.data).to.be.jsonSchema(schemaLogin)
     })
 })
      
