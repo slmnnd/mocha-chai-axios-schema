@@ -1,0 +1,219 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-06-02T12:08:02.416Z",
+    "end": "2024-06-02T12:08:05.287Z",
+    "duration": 2871,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "53be70f6-233a-47d9-bb3d-80e2a278bc43",
+      "title": "",
+      "fullFile": "C:\\Users\\DELL\\Documents\\work pray balance\\code\\Tugas 6\\MCAxios.test.js",
+      "file": "\\MCAxios.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "66137d8f-173f-4fb2-89f0-d88d33a9b2da",
+          "title": "API Testing",
+          "fullFile": "C:\\Users\\DELL\\Documents\\work pray balance\\code\\Tugas 6\\MCAxios.test.js",
+          "file": "\\MCAxios.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "ecd31fd6-5b82-4557-babf-55244fcdf470",
+              "title": "Todos API Testing",
+              "fullFile": "C:\\Users\\DELL\\Documents\\work pray balance\\code\\Tugas 6\\MCAxios.test.js",
+              "file": "\\MCAxios.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Menguji API dengan metode GET",
+                  "fullTitle": "API Testing Todos API Testing Menguji API dengan metode GET",
+                  "timedOut": false,
+                  "duration": 959,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const id = 5;\nconst res = await reusable.get(`/todos/${id}`)            \n  \n//assert\nexpect(res.status).to.equal(200)\nexpect(res.data).to.be.jsonSchema(schemaTodos)",
+                  "err": {},
+                  "uuid": "e1d9d2e8-110f-4204-bd61-026244ab8906",
+                  "parentUUID": "ecd31fd6-5b82-4557-babf-55244fcdf470",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Menguji API dengan metode POST dengan tipe data yang benar",
+                  "fullTitle": "API Testing Todos API Testing Menguji API dengan metode POST dengan tipe data yang benar",
+                  "timedOut": false,
+                  "duration": 561,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const createTodo = {\n    todo: \"Text dulu\",\n    completed : false,\n    userId : 152\n    };\n\nconst res = await reusable.post(`/todos/add`, createTodo)\n\n//assert\nexpect(res.status).to.equal(201)\nexpect(res.data).to.be.jsonSchema(schemaTodos)",
+                  "err": {},
+                  "uuid": "5e2de660-c10d-4c3f-ac9a-e5d4cbe9d504",
+                  "parentUUID": "ecd31fd6-5b82-4557-babf-55244fcdf470",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Menguji API dengan metode PUT",
+                  "fullTitle": "API Testing Todos API Testing Menguji API dengan metode PUT",
+                  "timedOut": false,
+                  "duration": 252,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const updateTodo = {\n    todo : \"Text a friend\",\n    completed : false,\n    userId : 152\n    };\n\nconst id = 1;            \nconst res = await reusable.put(`/todos/${id}`, updateTodo)\n//assert\nexpect(res.status).to.equal(200)\nexpect(res.data).to.be.jsonSchema(schemaTodos)",
+                  "err": {},
+                  "uuid": "711f3d5a-118e-45ef-8d9b-1dc6b4663555",
+                  "parentUUID": "ecd31fd6-5b82-4557-babf-55244fcdf470",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Menguji API dengan metode DELETE",
+                  "fullTitle": "API Testing Todos API Testing Menguji API dengan metode DELETE",
+                  "timedOut": false,
+                  "duration": 661,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const id = 2;    \nconst res = await reusable.delete(`/todos/${id}`)\n//assert\nexpect(res.status).to.equal(200)\nexpect(res.data.isDeleted).to.equal(true)",
+                  "err": {},
+                  "uuid": "d1f9e0e2-56ee-4ca1-8778-d24c7ede6714",
+                  "parentUUID": "ecd31fd6-5b82-4557-babf-55244fcdf470",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "e1d9d2e8-110f-4204-bd61-026244ab8906",
+                "5e2de660-c10d-4c3f-ac9a-e5d4cbe9d504",
+                "711f3d5a-118e-45ef-8d9b-1dc6b4663555",
+                "d1f9e0e2-56ee-4ca1-8778-d24c7ede6714"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 2433,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "d16a8caa-c023-4c78-94e5-2018ed25ae32",
+              "title": "Login API Testing",
+              "fullFile": "C:\\Users\\DELL\\Documents\\work pray balance\\code\\Tugas 6\\MCAxios.test.js",
+              "file": "\\MCAxios.test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Login menggunakan token",
+                  "fullTitle": "API Testing Login API Testing Login menggunakan token",
+                  "timedOut": false,
+                  "duration": 410,
+                  "state": "passed",
+                  "speed": "slow",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const res = await reusable.post('/auth/login', {\nusername: 'addisonw',\npassword: 'addisonwpass'\n})\n        \nconst login = await reusable.get('/auth/me', {\n    headers: {\n        authorization : 'Bearer ' + res.data.token\n    }                                 \n})   \n\n        //assert\n        expect(login.status).to.equal(200)\n        expect(res.data).to.be.jsonSchema(schemaLogin)",
+                  "err": {},
+                  "uuid": "262c94cb-32d2-4e6f-a2e2-46f78fd3a6ce",
+                  "parentUUID": "d16a8caa-c023-4c78-94e5-2018ed25ae32",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "262c94cb-32d2-4e6f-a2e2-46f78fd3a6ce"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 410,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "[datetime]-test-report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "report-test",
+        "reportFilename": "[datetime]-test-report",
+        "timestamp": "dd-mm-yyyy"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

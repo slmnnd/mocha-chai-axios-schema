@@ -18,7 +18,7 @@ describe('API Testing', function(){
             properties:{
                 id : {type : 'number'},
                 userId : {type : 'number'},
-                todo : {type : 'string'},
+                todo : {type : 'string', "minLength": 1, "maxLength": 1000},
                 completed : {type : 'boolean'},
             }
         }
@@ -70,7 +70,7 @@ describe('API Testing', function(){
 
             //assert
             expect(res.status).to.equal(200)
-            // expect(res.data).to.be.jsonSchema(schemaTodos)
+            expect(res.data.isDeleted).to.equal(true)
             
         })
     })
