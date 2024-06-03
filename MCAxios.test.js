@@ -1,28 +1,39 @@
 import axios from "axios";
 import * as chai from "chai";
 import chaiJsonSchemaAjv from "chai-json-schema-ajv";
-import dataTodos from "./MCAxios.js";
 
 chai.use(chaiJsonSchemaAjv)
 
-const {expect} = chai
+const {expect} = chai;
 
-describe('API Testing', function(){
-    const reusable = axios.create({
-        baseURL : "https://dummyjson.com"            
-    }); 
+const reusable = axios.create({
+    baseURL : "https://dummyjson.com"            
+});
 
-    describe('Todos API Testing', function(){
-        const schemaTodos = {
-            type : 'object',
-            properties:{
-                id : {type : 'number'},
-                userId : {type : 'number'},
-                todo : {type : 'string', "minLength": 1, "maxLength": 1000},
-                completed : {type : 'boolean'},
-            }
-        }
+const schemaTodos = {
+    type : 'object',
+    properties:{
+        id : {type : 'number'},
+        userId : {type : 'number'},
+        todo : {type : 'string', "minLength": 1, "maxLength": 1000},
+        completed : {type : 'boolean'},
+    }
+}
 
+const schemaLogin = {
+    type : 'object',
+    properties:{
+        id : {type : 'number'},
+        username : {type : 'string'},
+        password : {type : 'string'},
+        token : {type : 'string'},
+
+    }
+};
+
+
+describe('API Testing', function(){    
+    describe('Todos API Testing', function(){     
         it('Menguji API dengan metode GET', async function (){
             const id = 5;
             const res = await reusable.get(`/todos/${id}`)            
@@ -76,15 +87,7 @@ describe('API Testing', function(){
         })
     })
 
-    describe('Login API Testing', function(){
-        const schemaLogin = {
-            type : 'object',
-            properties:{
-                id : {type : 'number'},
-                username : {type : 'string'},
-                password : {type : 'string'},
-            }
-        }
+    describe('Login API Testing', function(){        
         it('Login menggunakan token', async function (){
             const res = await reusable.post('/auth/login', {
             username: 'addisonw',
