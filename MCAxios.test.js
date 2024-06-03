@@ -71,6 +71,7 @@ describe('API Testing', function(){
             //assert
             expect(res.status).to.equal(200)
             expect(res.data.isDeleted).to.equal(true)
+            expect(res.data).to.be.jsonSchema(schemaTodos)
             
         })
     })
